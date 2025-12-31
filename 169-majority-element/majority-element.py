@@ -4,13 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        count = {}
+        nums.sort()
+        n = len(nums) - 1
+        return nums[n//2]
 
-        res , MaxCount = 0 , 0
-
-        for n in nums:
-            count[n] = 1 + count.get(n , 0)
-            res = n if count[n] > MaxCount else res
-            MaxCount = max(count[n] , MaxCount)
-        return res    
 
