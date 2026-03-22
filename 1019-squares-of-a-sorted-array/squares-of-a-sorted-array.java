@@ -4,18 +4,24 @@ import java.util.Arrays;
 class Solution {
     public int[] sortedSquares(int[] nums) {
 
-        int n = nums.length - 1;
-        int[] arr = new int[nums.length];
+        int n = nums.length;
+        int[] result = new int[n];
 
-        int i = 0;
-        while (i <= n) {
-            nums[i] = nums[i] * nums[i];
-            arr[i] = nums[i];
-            i++;
+        int i = 0, j = n-1, k = n-1;
+        while (i <= j) {
+            int left = nums[i]*nums[i];
+            int right = nums[j]*nums[j];
+
+            if(left>right){
+                result[k] = left;
+                i++; 
+            }else{
+                result[k] = right;
+                j--;
+            }
+            k--;
+
         }
-
-
-        Arrays.sort(arr);
-        return arr;
+            return result;
     }
 }
